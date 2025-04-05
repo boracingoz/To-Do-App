@@ -1,0 +1,314 @@
+/* Global Settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Root Variables for Light Theme */
+:root {
+  --bg-color: #f0f2f5;
+  --container-bg: #ffffff;
+  --primary-color: #4caf50;
+  --text-color: #333333;
+  --input-bg: #ffffff;
+  --border-color: #dddddd;
+}
+
+/* Dark Theme Variables */
+body.dark {
+  --bg-color: #121212;
+  --container-bg: #1e1e1e;
+  --primary-color: #81c784;
+  --text-color: #f0f0f0;
+  --input-bg: #2c2c2c;
+  --border-color: #444444;
+}
+
+/* Body Styles */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  width: 100%;
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.theme-toggle button {
+  background: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle button:hover {
+  background-color: #388e3c;
+}
+
+/* Container for Main Application */
+.container {
+  background: var(--container-bg);
+  width: 100%;
+  max-width: 800px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styles */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+}
+
+header p {
+  margin-top: 8px;
+  font-size: 1.2rem;
+}
+
+.logout-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* Input Section Styles */
+.input-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.input-section input[type="text"],
+.input-section input[type="date"],
+.input-section select {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  outline: none;
+  font-size: 1rem;
+}
+
+.input-section button {
+  padding: 12px 20px;
+  border: none;
+  background: var(--primary-color);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.input-section button:hover {
+  background: #388e3c;
+}
+
+/* Filter Section Styles */
+.filter-section {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--primary-color);
+  color: #ffffff;
+  border-color: var(--primary-color);
+}
+
+/* List Section Styles */
+.list-section ul {
+  list-style: none;
+}
+
+.list-section li {
+  display: flex;
+  flex-direction: column;
+  background: var(--input-bg);
+  margin-bottom: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.list-section li:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.list-section li.completed .task-text {
+  text-decoration: line-through;
+  color: #888888;
+}
+
+/* Task Item Styles */
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-text {
+  flex: 1;
+  word-break: break-all;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.task-details {
+  font-size: 0.9rem;
+  color: #555555;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.task-details span {
+  margin-right: 10px;
+}
+
+/* Actions Buttons in Task Item */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.actions button:hover {
+  transform: scale(1.2);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+  header h1 {
+    font-size: 2rem;
+  }
+  .input-section input,
+  .input-section button,
+  .input-section select {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+  .filter-section button {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+  .list-section li {
+    padding: 10px;
+  }
+}
+
+/* Authentication Pages Styles */
+.auth-container {
+  background: var(--container-bg);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.auth-container h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.auth-container input {
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background: var(--input-bg);
+  color: var(--text-color);
+}
+
+.auth-container button {
+  padding: 12px;
+  border: none;
+  background: var(--primary-color);
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-container button:hover {
+  background: #388e3c;
+}
+
+.auth-container p {
+  margin-top: 15px;
+}
+
+.auth-container a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.message {
+  margin-top: 10px;
+  color: red;
+}
