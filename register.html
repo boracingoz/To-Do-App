@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Register - Advanced To-Do App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="auth-container">
+      <h2>Register</h2>
+      <form id="register-form">
+        <input
+          type="text"
+          id="register-username"
+          placeholder="Username"
+          required
+        />
+        <input
+          type="password"
+          id="register-password"
+          placeholder="Password"
+          required
+        />
+        <input
+          type="password"
+          id="register-confirm"
+          placeholder="Confirm Password"
+          required
+        />
+        <button type="submit">Register</button>
+      </form>
+      <p>Already have an account? <a href="login.html">Login Here</a></p>
+      <div id="register-message" class="message"></div>
+    </div>
+    <script src="auth.js"></script>
+    <script>
+      document
+        .getElementById("register-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          var username = document
+            .getElementById("register-username")
+            .value.trim();
+          var password = document.getElementById("register-password").value;
+          var confirmPassword =
+            document.getElementById("register-confirm").value;
+          var messageDiv = document.getElementById("register-message");
+          if (password !== confirmPassword) {
+            messageDiv.textContent = "Passwords do not match.";
+            return;
+          }
+          if (registerUser(username, password)) {
+            messageDiv.textContent =
+              "Registration successful! Redirecting to login page...";
+            setTimeout(function () {
+              window.location.href = "login.html";
+            }, 1500);
+          } else {
+            messageDiv.textContent = "This username is already taken.";
+          }
+        });
+    </script>
+  </body>
+</html>
